@@ -1,0 +1,241 @@
+-- MySQL Administrator dump 1.4
+--
+-- ------------------------------------------------------
+-- Server version	5.5.25a
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+--
+-- Create schema bookshop
+--
+
+CREATE DATABASE IF NOT EXISTS bookshop;
+USE bookshop;
+
+--
+-- Definition of table `card`
+--
+
+DROP TABLE IF EXISTS `card`;
+CREATE TABLE `card` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `uemail` varchar(45) DEFAULT NULL,
+  `productname` varchar(45) DEFAULT NULL,
+  `pid` varchar(45) DEFAULT NULL,
+  `actualcost` varchar(45) DEFAULT NULL,
+  `quantity` varchar(45) DEFAULT NULL,
+  `totalprice` varchar(45) DEFAULT NULL,
+  `username` varchar(45) NOT NULL,
+  `cardnumber` varchar(45) NOT NULL,
+  `exdate` varchar(45) NOT NULL,
+  `exmonth` varchar(45) NOT NULL,
+  `cvv` varchar(45) NOT NULL,
+  `status` varchar(45) NOT NULL,
+  `orderid` longtext,
+  `mediupi` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `card`
+--
+
+/*!40000 ALTER TABLE `card` DISABLE KEYS */;
+INSERT INTO `card` (`id`,`uemail`,`productname`,`pid`,`actualcost`,`quantity`,`totalprice`,`username`,`cardnumber`,`exdate`,`exmonth`,`cvv`,`status`,`orderid`,`mediupi`) VALUES 
+ (1,'dhinesh@gmail.com','dhinesh','1','5','1','5','dhinesh','554555554454545','5454','54','545','orderforward','63ee4472-165f-4ed3-b752-9312b2bf43d9','1234'),
+ (2,'dhinesh@gmail.com','dhinesh','1','5','1','5','dhinesh','554555554454545','5454','54','545','orderforward','63ee4472-165f-4ed3-b752-9312b2bf43d9','1234'),
+ (3,'dhinesh@gmail.com','dhinesh','1','5','1','5','dhinesh','554555554454545','5454','54','545','orderforward','63ee4472-165f-4ed3-b752-9312b2bf43d9','1234'),
+ (4,'dhinesh@gmail.com','python','2','10','1','10','','','','','','Added to cart','','1234'),
+ (5,'dhinesh@gmail.com','dhinesh','1','5','1','5','','','','','','Added to cart','','1234');
+/*!40000 ALTER TABLE `card` ENABLE KEYS */;
+
+
+--
+-- Definition of table `delivermanreg`
+--
+
+DROP TABLE IF EXISTS `delivermanreg`;
+CREATE TABLE `delivermanreg` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  `gender` varchar(45) DEFAULT NULL,
+  `about` varchar(100) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `delivermanreg`
+--
+
+/*!40000 ALTER TABLE `delivermanreg` DISABLE KEYS */;
+INSERT INTO `delivermanreg` (`id`,`name`,`email`,`password`,`gender`,`about`,`status`) VALUES 
+ (1,'dhinesh','dhinesh@gmail.com','111','on',' Tell me about yourself','');
+/*!40000 ALTER TABLE `delivermanreg` ENABLE KEYS */;
+
+
+--
+-- Definition of table `expenditure`
+--
+
+DROP TABLE IF EXISTS `expenditure`;
+CREATE TABLE `expenditure` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `date` varchar(45) NOT NULL,
+  `mail` varchar(45) NOT NULL,
+  `upi` varchar(45) NOT NULL,
+  `amount` varchar(45) NOT NULL,
+  `description` longtext NOT NULL,
+  `status` varchar(45) NOT NULL,
+  `status1` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `expenditure`
+--
+
+/*!40000 ALTER TABLE `expenditure` DISABLE KEYS */;
+/*!40000 ALTER TABLE `expenditure` ENABLE KEYS */;
+
+
+--
+-- Definition of table `money`
+--
+
+DROP TABLE IF EXISTS `money`;
+CREATE TABLE `money` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `date` varchar(45) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `upi` varchar(45) NOT NULL,
+  `amount` varchar(45) NOT NULL,
+  `status` varchar(45) NOT NULL,
+  `status1` varchar(45) NOT NULL,
+  `status2` varchar(45) NOT NULL,
+  `quantity` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `money`
+--
+
+/*!40000 ALTER TABLE `money` DISABLE KEYS */;
+INSERT INTO `money` (`id`,`date`,`name`,`upi`,`amount`,`status`,`status1`,`status2`,`quantity`) VALUES 
+ (1,'06/03/2023 11:05:37','dhinesh','1234','100','45-Page-5 (1).jpg','approved','','20'),
+ (2,'06/03/2023 13:32:50','python','1234','200','45-Page-7.jpg','approved','','20'),
+ (3,'07/03/2023 13:47:15','agni siragukal','1234','20','TY-Page-3.jpg','approved','','2');
+/*!40000 ALTER TABLE `money` ENABLE KEYS */;
+
+
+--
+-- Definition of table `orderupdate`
+--
+
+DROP TABLE IF EXISTS `orderupdate`;
+CREATE TABLE `orderupdate` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pname` varchar(45) DEFAULT NULL,
+  `price` varchar(45) DEFAULT NULL,
+  `cname` varchar(45) DEFAULT NULL,
+  `quan` varchar(45) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  `mid` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orderupdate`
+--
+
+/*!40000 ALTER TABLE `orderupdate` DISABLE KEYS */;
+INSERT INTO `orderupdate` (`id`,`pname`,`price`,`cname`,`quan`,`status`,`mid`) VALUES 
+ (1,'dhinesh','5','dhinesh','1','Ordered','1234'),
+ (2,'dhinesh','5','dhinesh','1','Ordered','1234');
+/*!40000 ALTER TABLE `orderupdate` ENABLE KEYS */;
+
+
+--
+-- Definition of table `usereg`
+--
+
+DROP TABLE IF EXISTS `usereg`;
+CREATE TABLE `usereg` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `mobile` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `cpassword` varchar(45) NOT NULL,
+  `image` varchar(45) NOT NULL,
+  `upi` bigint(100) unsigned NOT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  `location` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `usereg`
+--
+
+/*!40000 ALTER TABLE `usereg` DISABLE KEYS */;
+INSERT INTO `usereg` (`id`,`name`,`email`,`mobile`,`password`,`cpassword`,`image`,`upi`,`status`,`location`) VALUES 
+ (1,'dhinesh','dhinesh@gmail.com','1234567','111','111','45-Page-5 (1).jpg',1234,'approved','rameswaram'),
+ (2,'Karthick','karthi1@gmail.com','1234567','111','111','TY-Page-5.jpg',4321,'approved','chennai'),
+ (3,'admin','dhinesh@gmail.com','1234567','111','111','TY-Page-5 (2).jpg',9876,'approved','thangachimadam');
+/*!40000 ALTER TABLE `usereg` ENABLE KEYS */;
+
+
+--
+-- Definition of table `userregister`
+--
+
+DROP TABLE IF EXISTS `userregister`;
+CREATE TABLE `userregister` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  `id_copy1` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `userregister`
+--
+
+/*!40000 ALTER TABLE `userregister` DISABLE KEYS */;
+INSERT INTO `userregister` (`id`,`username`,`email`,`password`,`id_copy1`) VALUES 
+ (1,'dhinesh','dhinesh@gmail.com','111','111'),
+ (2,'dhinesh','dhinesh@gmail.com','111','11');
+/*!40000 ALTER TABLE `userregister` ENABLE KEYS */;
+
+
+
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
